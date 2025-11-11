@@ -1,0 +1,192 @@
+.feature {
+    /* Estas propiedades ya estaban o son las base de tu sección */
+    background: var(--dark-color);
+    padding: 5rem 0;
+
+    /* Nuevas propiedades cruciales para el slideshow de fondo */
+    position: relative; /* Muy importante para posicionar el slideshow de fondo */
+    overflow: hidden;   /* Oculta las partes del slideshow que se salen del contenedor */
+    min-height: 80vh;   /* Asegura que la sección tenga suficiente altura para el slideshow */
+    display: flex;      /* Ayuda a centrar el contenido (texto y horarios) */
+    align-items: center; /* Centra verticalmente el contenido */
+    justify-content: center; /* Centra horizontalmente el contenido */
+    z-index: 1;         /* Asegura que el contenido frontal pueda tener un z-index más alto */
+}
+
+/* Contenedor del slideshow que será el fondo opacado */
+/*.slideshow-background {
+    position: absolute; /* Se posiciona respecto a .feature (asegúrate que .feature tenga position: relative;) */
+    /*top: 0;
+    left: 0;
+    width: 100%;        /* Ocupa el 100% del ancho de su padre (.feature) */
+    /*height: 100%;
+    overflow: hidden;
+    z-index: -1;
+    opacity: 0.3;
+    background-color: black;
+    /* CONSIDERAR: Si .feature es el ancho de tu contenido y no el ancho completo del viewport, esto está bien.
+       Si quieres que el slideshow ocupe todo el ancho de la pantalla (de borde a borde),
+       independientemente de tu .container, entonces necesitarás envolver la <section> en algo que le dé 100vw
+       y ajustar este position absolute si .feature no es el body. 
+}
+
+/* Contenedor interno que contendrá todas las imágenes y se moverá */
+/*.slideshow-inner {
+    display: flex;
+    /* width: fit-content; <--- Mantener, esto es correcto para flexbox */
+   /* height: 100%;
+    transition: transform 1s ease-in-out;
+}
+
+/* Estilos para cada imagen dentro del slideshow */
+/*.slideshow-inner img {
+    /* CAMBIO CLAVE: Usa 100% en lugar de 100vw, para que respete el contenedor padre */
+    /* Sin embargo, como slideshow-inner tiene display: flex y las imágenes son flex-shrink: 0,
+       necesitamos que cada imagen tenga el ancho del contenedor visible del slideshow,
+       no el 100% de su contenedor "inner" que es muy ancho. */
+   /* width: 100%; /* <--- ¡ESTE CAMBIO ES CRUCIAL! Ahora la imagen tomará el ancho del VIEWPORT visible para UNA imagen */
+                 /* Para que esto funcione, el JS del slideshow debe animar la propiedad 'transform: translateX()'
+                    de .slideshow-inner por el ancho de UNA imagen hija. */
+
+   /* height: 100%;
+    object-fit: cover;
+    flex-shrink: 0;
+    display: block;
+}
+/*---------------------------------------------------------------------------------------*/
+.slideshow-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+    opacity: 0.3;
+    background-color: black;
+}
+
+.slideshow-inner {
+    display: flex;
+    height: 100%;
+    transition: transform 1s ease-in-out;
+}
+
+.slideshow-inner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    flex-shrink: 0;
+    display: block;
+}
+
+/* --- ESTILOS DEL CONTENIDO CENTRAL DEL SLIDESHOW (ENCIMA DEL FONDO) --- */
+.slideshow-title-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    text-align: center;
+    width: 90%;
+    max-width: 800px;
+    padding: 20px;
+}
+
+/* Estilos para el enlace de Instagram principal (si lo vuelves a habilitar en el HTML) */
+.slideshow-instagram-link {
+    color: var(--white-color);
+    font-size: 1.8em;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    transition: color 0.3s ease;
+}
+
+.slideshow-instagram-link:hover {
+    color: var(--primary-color);
+    transform: scale(1.05);
+}
+
+.slideshow-instagram-link i {
+    margin-right: 8px;
+}
+
+.slideshow-instagram-link span {
+    font-size: 0.7em;
+    font-weight: var(--font-weight-light);
+    opacity: 0.9;
+}
+
+/* --- ESTILOS PARA "Seguinos" y Logo de Instagram (VERDE Y AL LADO) --- */
+.seguinos-instagram {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row; /* CAMBIO CLAVE */
+    align-items: center;
+    justify-content: center;
+}
+
+.seguinos-instagram a {
+    color: var(--primary-color);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.seguinos-instagram a:hover {
+    transform: scale(1);
+    text-shadow: 0 0 5px var(--primary-color), /* Primer resplandor */
+                 0 0 25px var(--primary-color); /* Segundo resplandor más difuso */
+    /* O para un resplandor blanco: */
+    /* text-shadow: 0 0 10px white, 0 0 20px white; */
+
+}
+
+/* NUEVA REGLA para el texto */
+.seguinos-instagram a .seguinos-text { /* Apuntamos al nuevo div con la clase */
+    font-size: 3em; /* Tamaño del texto "Seguinos" */
+    font-weight: bold; /* Negrita */
+    margin-right: 20px; /* Separación del ícono */
+    white-space: nowrap; /* Evita que el texto se rompa en varias líneas */
+    
+}
+/*.seguinos-instagram a span {
+    /*font-size: 5em; /* Tamaño del texto "Seguinos" */
+   /* font-weight: bold; /* CAMBIO: Probando 'bold' si 900 no funciona */
+    /*margin-right: 80px;*/
+
+
+ .seguinos-instagram a i.fa-instagram {
+    font-size: 3em; /*AUMENTADO */
+
+ }
+/* --- Media queries para ajustar el contenido central en dispositivos móviles --- */
+@media (max-width: 767px) {
+    .slideshow-title-overlay {
+        width: 100%;
+        padding: 10px;
+    }
+    .seguinos-instagram { /* Este ajuste está bien */
+        margin-top: 20px;
+    }
+
+    /* ¡Esta es la regla que debe quedar y ajustar para móviles! */
+    .seguinos-instagram a .seguinos-text {
+        font-size: 1.8em; /* <-- Prueba con este tamaño grande o el que desees */
+        font-weight: bold;
+        margin-right: 15px; /* <-- Prueba con esta separación grande o la que desees */
+        white-space: nowrap; /* Asegura que no se rompa la línea */
+    }
+    .seguinos-instagram a:hover {
+    transform: scale(1.15); /* Tu valor actual para agrandar en hover */
+    text-shadow: 0 0 5px rgba(235, 211, 211, 0.6); /* <-- Aquí el glow */
+}
+
+    .seguinos-instagram a i.fa-instagram {
+        font-size: 1.8em; /* Ícono en móvil */
+    }
+}
