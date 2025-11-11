@@ -1,0 +1,1223 @@
+/*
+
+4Life
+
+*/
+ @font-face {
+      font-family: 'Plain';
+      src: url('../fonts/Plain-Regular.woff2') format('woff2'),
+          url('../fonts/Plain-Regular.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+  }
+
+  @font-face {
+      font-family: 'Plain';
+      src: url('../fonts/Plain-Light.woff2') format('woff2'),
+          url('../fonts/Plain-Light.woff') format('woff');
+      font-weight: 300;
+      font-style: normal;
+  }
+
+  @font-face {
+      font-family: 'Plain';
+      src: url('../fonts/Plain-Bold.woff2') format('woff2'),
+          url('../fonts/Plain-Bold.woff') format('woff');
+      font-weight: bold;
+      font-style: normal;
+  }
+
+  :root {
+    --primary-color:        #02b911;
+    --white-color:          #ffffff;
+    --dark-color:           #171819;
+    --about-bg-color:       #f9f9f9;
+
+    --gray-color:           #909090;
+    --link-color:           #404040;
+    --p-color:              #666262;
+
+    --base-font-family:     'Plain', sans-serif;
+    --font-weight-bold:     bold;
+    --font-weight-normal:   normal;
+    --font-weight-light:    300;
+    --font-weight-thin:     100;
+
+    --h1-font-size:         48px;
+    --h2-font-size:         36px;
+    --h3-font-size:         28px;
+    --h4-font-size:         24px;
+    --h5-font-size:         22px;
+    --h6-font-size:         15px;
+    --p-font-size:          18px;
+    --base-font-size:       16px;
+    --menu-font-size:       14px;
+
+    --border-radius-large:  100%;
+    --border-radius-small:  2px;
+  }
+
+
+body {
+ background: #171819; /* Cambia el color de fondo a negro */
+    /* O si usas variables CSS: */
+    /* background: var(--black-color); */ 
+    font-family: var(--base-font-family);
+    margin: 0;
+  /* --- Estilos para Móviles --- */
+  margin: 0; /* Mantenemos margin: 0; para eliminar el margen por defecto del navegador */
+  /* Eliminamos el padding del body para que los elementos de ancho completo ocupen el 100% del viewport */
+  /* Si necesitas padding interno en otras secciones, aplícalo directamente a esas secciones o a un contenedor general */
+  /* padding: 15px; -- ELIMINAR ESTA LÍNEA O CAMBIARLA POR 'padding: 0;' -- */
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-text-size-adjust: 100%;
+}
+
+  
+
+
+  /*---------------------------------------
+     Tipografia             
+  -----------------------------------------*/
+
+  h1,h2,h3,h4,h5,h6 {
+    font-weight: var(--font-weight-thin);
+    line-height: normal;
+  }
+
+  h1 {
+    font-size: var(--h1-font-size);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    margin: 20px 0;
+  }
+
+  h2 {
+  font-size: var(--h2-font-size);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: -2px;
+}
+
+.titulo-instalaciones {
+  color: #d8dad8; /* Aplica el color verde */
+  text-shadow: 0 0 10px rgba(9, 194, 25, 0.8); /* Glow verde suave */
+}
+
+  h3 {
+    font-size: var(--h3-font-size);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: -1px;
+    margin: 0;
+  }
+
+  h4 {
+    font-size: var(--h4-font-size);
+  }
+
+  h5 {
+    font-size: var(--h5-font-size);
+  }
+
+  h6 {
+    color: var(--gray-color);
+    font-size: calc(var(--h6-font-size) * 1.5); /* Aumenta el tamaño en un 50% */
+    font-weight: bold; /* Añade esta línea para poner el texto en negrita */
+    line-height: inherit;
+    margin: 0;
+    text-shadow: 3px;
+  }
+
+  p {
+    color: var(--white-color) ;
+    font-size: 1.1rem ;
+    font-weight: bold(--font-weight-light);
+    line-height: 1.5em;
+  }
+
+  b, 
+  strong {
+    font-weight: var(--font-weight-bold);
+    letter-spacing: 0;
+  }
+
+  .section {
+    padding: 7rem 0;
+  }
+
+
+  /* BUTTON */
+
+  .custom-btn {
+    background: transparent;
+    border-radius: var(--border-radius-small);
+    padding: 14px 24px;
+    color: var(--white-color);
+    font-size: 1.2em;
+    font-weight: var(--font-weight-normal);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+  }
+
+  .custom-btn:hover {
+    color: var(--primary-color);
+  }
+
+  .custom-btn:focus {
+    box-shadow: none;
+  }
+
+  .custom-btn.bordered:hover,
+  .custom-btn.bordered:focus,
+
+  .custom-btn.bg-color:hover,
+  .custom-btn.bg-color:focus {
+    background: var(--white-color);
+    border-color: transparent;
+    color: var(--primary-color);
+  }
+
+  .bordered {
+    border: 2px solid var(--primary-color);
+      color: var(--primary-color);
+  }
+
+  .bg-color {
+    background: var(--primary-color);
+    color: var(--white-color);
+  }
+
+
+
+  /*---------------------------------------
+     GENERAL               
+  -----------------------------------------*/
+
+  * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  /* Regla .row */
+ .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; /* Distribuye el espacio de manera uniforme alrededor de las imágenes */
+    align-items: flex-start; /* Alinea las imágenes en la parte superior */
+}
+
+.row > div[class*="col-lg-"] {
+    padding-left: 15px; /* Ajusta este valor para controlar el espacio entre las columnas */
+    padding-right: 15px; /* Ajusta este valor para controlar el espacio entre las columnas */
+/* }
+
+.row > div[class*="col-lg-"] {
+    padding-left: 15px; /* Ajusta este valor para controlar el espacio entre las columnas */
+    padding-right: 15px; /* Ajusta este valor para controlar el espacio entre las columnas */
+}
+
+    *::before,
+    *::after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+*/
+
+  a {
+    color: var(--link-color);
+    font-weight: normal;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  a:hover, 
+  a:active, 
+  a:focus {
+    color: var(--primary-color);
+    outline: none;
+    text-decoration: none;
+  }
+
+
+  /* BG OVERLAY */
+
+  .bg-overlay {
+    background: var(--dark-color);
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.85;
+  }
+
+
+  /*---------------------------------------
+     MODAL              
+  -----------------------------------------*/
+
+ .formulario-fondo-transparente {
+  position: relative;
+  padding: 2rem 3rem;
+  overflow: hidden; /* Añade esto para ver si ayuda con el recorte */
+}
+
+.formulario-fondo-transparente::before {
+  content: " "; /* Añade un espacio en blanco */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 255, 0.3); /* Azul con transparencia */
+  z-index: -1;
+}
+
+.modal-content {
+  padding: 2rem 3rem;
+  position: relative; /* Asegúrate de que esté por encima del ::before */
+  background-color: white; /* Asegúrate de que el fondo del contenido no sea transparente */
+}
+
+.modal-header,
+.modal-body,
+.modal-footer {
+  border: 0;
+  padding: 0;
+  position: relative;
+  background-color: transparent; /* Asegúrate de que no oculten el fondo */
+}
+
+.membership-form a {
+  color: var(--primary-color);
+  position: relative;
+  background-color: transparent; /* Asegúrate de que no oculten el fondo */
+}
+
+
+  /*---------------------------------------
+    FEATURE          
+  -----------------------------------------*/
+
+
+/* Contenido que estará por encima del slideshow (tu texto y horarios) */
+.content-overlay {
+    position: relative; /* Lo trae al frente, sobre el slideshow */
+    z-index: 2;         /* ¡Asegura que el contenido esté POR ENCIMA del slideshow (-1)! */
+    /* Puedes añadir padding o margen si necesitas más espacio alrededor del contenido */
+}
+
+/* Reglas para alinear las columnas y sus contenidos (manteniendo tus reglas existentes) */
+.feature .row {
+    align-items: flex-start; /* Asegura que los elementos dentro de la fila se alineen al inicio verticalmente */
+}
+
+.feature .col-lg-5,
+.feature .col-lg-4 {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+/* Asegurar que el texto dentro del content-overlay sea legible */
+.content-overlay h2,
+.content-overlay h6,
+.content-overlay p,
+.content-overlay strong {
+    color: rgb(250, 247, 247) !important; /* Fuerza el color blanco para asegurar visibilidad */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Sombra para el texto para mejor lectura */
+}
+
+/* Si tu botón tiene estilos que lo hacen transparente, puede que necesites ajustarlo */
+.content-overlay .btn {
+    z-index: 3; /* Asegura que el botón esté sobre todo si tuviera problemas */
+    position: relative; /* Necesario para z-index */
+}
+.btn .fa-whatsapp {
+        margin-right: 8px; /* Ajusta este valor según tu preferencia */
+  
+}
+
+/* Opcional: ajustar márgenes si el slideshow es 100vw y el texto está muy pegado a los bordes */
+.container {
+    width: 100%;  /*Ocupa todo el ancho disponible */
+    /* max-width: 960px; /* Un ancho máximo para el contenedor en desktop */
+    padding: 0 15px; /* Un poco de padding a los lados */
+    box-sizing: border-box; /* Incluye padding y borde en el ancho/alto */
+    /* margin: 0 auto;  Centrar el contenedor */
+}
+
+/* ... (el resto de tu código CSS existente después de este punto) ... */
+
+  /*---------------------------------------
+     MENU             
+  -----------------------------------------*/
+
+  .navbar {
+    background: var(--dark-color);
+    padding: 1rem;
+    padding-bottom: 0.5rem; 
+  }
+
+  .navbar-expand-lg .navbar-nav .nav-link {
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+  }
+
+  .navbar-brand {
+    color: var(--white-color);
+    font-size: var(--h3-font-size);
+    font-weight: var(--font-weight-bold);
+    line-height: normal;
+    padding-top: 0;
+  
+  }
+
+  .nav-item .nav-link {
+    display: block;
+    color: var(--white-color);
+    font-size: var(--menu-font-size);
+    font-weight: var(--font-weight-normal);
+    text-transform: uppercase;
+    padding: 2px 6px;
+    font-size: 18px
+  }
+
+  .nav-item .nav-link.active,
+  .nav-item .nav-link:hover {
+    color: var(--primary-color);
+  }
+
+  .navbar .social-icon li a {
+    color: var(--white-color);
+  }
+
+  .navbar-toggler {
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    margin: 0 10px 0 0;
+    width: 30px;
+    height: 35px;
+    outline: none;
+  }
+
+  .navbar-toggler:focus {
+    outline: none;
+  }
+
+  .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
+    background: transparent;
+  }
+
+  .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::before,
+  .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::after {
+    transition: top 300ms 50ms ease, -webkit-transform 300ms 350ms ease;
+    transition: top 300ms 50ms ease, transform 300ms 350ms ease;
+    transition: top 300ms 50ms ease, transform 300ms 350ms ease, -webkit-transform 300ms 350ms ease;
+    top: 0;
+  }
+
+  .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::before {
+    transform: rotate(45deg);
+  }
+
+  .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::after {
+    transform: rotate(-45deg);
+  }
+
+  .navbar-toggler .navbar-toggler-icon {
+    background: var(--primary-color);
+    transition: background 10ms 300ms ease;
+    display: block;
+    width: 30px;
+    height: 2px;
+    position: relative;
+  }
+
+  .navbar-toggler .navbar-toggler-icon::before,
+  .navbar-toggler .navbar-toggler-icon::after {
+    transition: top 300ms 350ms ease, -webkit-transform 300ms 50ms ease;
+    transition: top 300ms 350ms ease, transform 300ms 50ms ease;
+    transition: top 300ms 350ms ease, transform 300ms 50ms ease, -webkit-transform 300ms 50ms ease;
+    position: absolute;
+    right: 0;
+    left: 0;
+    background: var(--primary-color);
+    width: 30px;
+    height: 2px;
+    content: '';
+  }
+
+  .navbar-toggler .navbar-toggler-icon::before {
+    top: -8px;
+  }
+
+  .navbar-toggler .navbar-toggler-icon::after {
+    top: 8px;
+  }
+
+  /*---------------------------------------
+     HERO              
+  -----------------------------------------*/
+
+  .hero {
+    background-image: url('../images/gymin3.png');
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+    vertical-align: middle;
+    min-height: 100vh;
+    position: relative;
+    margin-top: -20px; /* Usa un aboutvalor negativo para reducir el espacio */
+    background-attachment: fixed;
+  }
+
+.row:not(.mt-4) .col-lg-4:nth-child(3) {
+    padding-left: 15px; /* Añade espacio a la izquierda de la tercera imagen */
+  }
+  /*---------------------------------------
+    INTRO CTA SECTION (Nuevo)
+-----------------------------------------*/
+/*---------------------------------------
+    INTRO CTA SECTION (Actualizado para tener el fondo)
+-----------------------------------------*/
+#intro-cta {
+    background-image: url('../images/logomediano.png'); /* ¡Esta es tu imagen de fondo! */
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-color: #000; /* Color de fallback o base si la imagen no carga */
+
+    position: relative; /* Muy importante para que el pseudo-elemento ::before se posicione correctamente */
+    z-index: 1; /* El z-index de la sección contenedora para que su contenido esté encima de la imagen y el overlay */
+
+    padding-top: 100px; /* Asegura el espacio para el contenido */
+    padding-bottom: 100px; /* Asegura el espacio para el contenido */
+    /* Si es necesario, podrías añadir padding aquí si no usaste la clase py-5 de Bootstrap
+       o si quieres un padding diferente al predefinido por Bootstrap. */
+    /* padding: 5rem 0; */
+}
+
+/* El pseudo-elemento ::before para la capa semitransparente para #intro-cta */
+#intro-cta::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Opacidad del logo */
+    z-index: -1; /* Coloca el overlay detrás del contenido de la sección pero encima de la imagen de fondo */
+}
+
+/* ... tu regla .contact (ahora con las líneas comentadas como me lo mostraste) ... */
+.contact {
+    /* ... propiedades de posición y padding que mantuviste ... */
+}
+
+/* ... el resto de tu CSS ... */
+
+  /*---------------------------------------
+    CLASS
+    -----------------------------------------*/
+
+  .class-info {
+    background: var(--white-color);
+    box-shadow: 6px 0 38px rgba(20,20,20,0.10);
+    border-radius: 0 0 2px 2px;
+    padding: 1rem 2rem;
+    position: relative;
+    margin-top: auto; /* Asegúrate de tener esta línea */
+  }
+
+  .class-info img {
+    border-radius: 2px 2px 0 0;
+  }
+
+  .class-thumb {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    flex-grow: 2;
+    margin-left: auto; /* Añade margen automático a la izquierda */
+    margin-right: auto; /* Añade margen automático a la derecha */
+    min-height: 100px; /* Ajusta este valor según la altura del contenedor más alto */
+
+  }
+
+  .class-thumb img.img-fluid {
+    width: 400px;
+    height: 300px;
+    object-fit: cover;
+    display: block; /* Ocupa el ancho completo del .class-thumb */
+  }
+  /* Flexibiliza imágenes y videos por defecto */
+img, video {
+    max-width: 100%;  /* Asegura que la imagen nunca sea más ancha que su contenedor */
+    height: auto;     /* Mantiene la relación de aspecto para evitar que se distorsione */
+    display: block;   /* Elimina el espacio extra que a veces aparece debajo de las imágenes */
+}
+
+  .class-price {
+    background: var(--primary-color);
+    border-radius: var(--border-radius-large);
+    color: var(--white-color);
+    font-weight: var(--font-weight-bold);
+    display: block;
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    width: 3.5rem;
+    height: 3.5rem;
+    line-height: 3.5rem;
+    text-align: center;
+  }
+
+  .col-lg-4,
+  .col-md-4,
+  .col-sm-6 {
+      display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Cambiamos 'stretch' a 'flex-start' */
+  }
+
+  #class .container .row {
+    align-items: flex-start; /* Alinea los elementos al inicio (arriba) */
+  }
+  #class { /* Usamos el ID para ser específicos de esta sección */
+    background-image: url('images/class/weightlifting_area.jpg'); /* Ajusta la ruta a tu imagen */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* Opcional: Si el contenido es oscuro, puedes añadir un overlay para que el texto sea más legible */
+     position: relative; 
+      z-index: 1; /* Asegura que el contenido esté por encima del overlay */
+}
+#class::before {
+    content: ""; /* Es necesario para que el pseudo-elemento se muestre */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Color negro con 40% de opacidad */
+    z-index: -1; /* Coloca el overlay detrás del contenido pero delante del fondo */
+}
+
+  /* ... el resto de tu CSS para la sección CLASS ... */
+
+  .class-info strong {
+    color: var(--gray-color);
+  }
+
+  .class-price {
+    background: var(--primary-color);
+    border-radius: var(--border-radius-large);
+    color: var(--white-color);
+    font-weight: var(--font-weight-bold);
+    display: block;
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    width: 3.5rem;
+    height: 3.5rem;
+    line-height: 3.5rem;
+    text-align: center;
+  }
+  .row.mt-4 .col-lg-4,
+  .row.mt-4 .col-md-4,
+  .row.mt-4 .col-sm-6 {
+    padding-left: 7.5px; /* Reduce el padding izquierdo */
+    padding-right: 7.5px; /* Reduce el padding derecho */
+  }
+
+  .row.mt-4 {
+    margin-left: -7.5px; /* Ajusta el margen izquierdo de la fila para compensar */
+    margin-right: -7.5px; /* Ajusta el margen derecho de la fila para compensar */
+  }
+  .row:not(.mt-4) .col-lg-4:nth-child(1) {
+    padding-right: 15px; /* Añade espacio a la derecha de la primera imagen */
+  }
+
+  .row:not(.mt-4) .col-lg-4:nth-child(2) {
+    padding-left: 7.5px; /* Añade espacio a la izquierda de la segunda imagen */
+    padding-right: 7.5px; /* Añade espacio a la derecha de la segunda imagen */
+  }
+
+  .row:not(.mt-4) .col-lg-4:nth-child(3) {
+    padding-left: 15px; /* Añade espacio a la izquierda de la tercera imagen */
+  }
+
+  /* AQUÍ DEBERÍAS PEGAR EL CÓDIGO PARA .class Y .class::before */
+  .class {
+    position: relative; /*Para posicionar el pseudo-elemento */
+    padding: 7rem 0; /* Mantiene padding de la sección */
+    overflow: hidden; /* Para que el blur no se salga del contenedor */
+    background-color: #171819; /* Añadimos el color de fondo directamente al .class */
+  }
+
+  .class::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/gymcollagepng.png'); /* Mantenemos la imagen */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center; /* Centramos la imagen */
+    filter: blur(5px); /* Ajusta el radio del blur si lo deseas */
+    z-index: -1; /* Coloca el fondo detrás del contenido */
+    opacity: 0.6; /* Puedes ajustar la opacidad de la imagen para que se integre mejor con el fondo */
+  }
+
+  #class h6 {
+    color: var(--white-color); /* Cambia el color del texto a blanco */
+  }
+
+  .mb-4 {
+  color: #ffffff; /* Cambia el color del texto a gris claro */
+}
+
+  /*---------------------------------------
+    SCHEDULE
+    -----------------------------------------*/
+
+  
+  /* ... el resto de tu CSS para la sección SCHEDULE ... */
+
+  /*---------------------------------------
+     SCHEDULE             
+  -----------------------------------------*/
+
+  .schedule {
+    background: var(--dark-color);
+  }
+
+  .schedule-table {
+    display: table;
+    border: 0;
+    text-align: center;
+  }
+
+  .schedule-table strong,
+  .schedule-table span {
+    display: block;
+    text-align: center;
+  }
+
+  .schedule-table strong {
+    color: var(--white-color);
+  }
+
+  .schedule-table span {
+    color: var(--gray-color);
+  }
+
+  .schedule-table span,
+  .schedule-table small {
+    font-size: var(--menu-font-size);
+    text-transform: uppercase;
+  }
+
+  .schedule-table small {
+    position: relative;
+    top: 10px;
+  }
+
+  .table .thead-light th,
+  .schedule-table tr td:first-child {
+    background: var(--primary-color);
+    border: 1px solid #212122;
+    color: var(--white-color);
+  }
+
+  .schedule-table .thead-light th {
+    border-bottom: 0;
+    text-transform: uppercase;
+  }
+
+  .table-bordered td, 
+  .table-bordered th {
+    border: 1px solid #212122;
+  }
+
+  .table-bordered td {
+    padding-bottom: 22px;
+  }
+
+  .table td, .table th {
+    padding: 1rem;
+  }
+
+
+  /*---------------------------------------
+      ABOUT & TEAM            
+  -----------------------------------------*/
+
+  
+  .about {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/gymcollage2.png'); /* Ruta a tu imagen */
+  background-repeat: no-repeat;
+  background-size: cover; /* O contain, experimenta para ver cuál te gusta más */
+  background-position: center top; /* Ajusta la posición según lo necesites */
+  padding: 7rem 0; /* Mantiene el padding de la sección */
+  /* Si quieres probar un efecto "fijo" (puede no funcionar como esperas): */
+   background-attachment: fixed; 
+}
+
+.about-working-hours {
+  border-left: 2px solid;
+  padding-left: 3.5rem;
+}
+
+.about-working-hours strong {
+  color: var(--white-color);
+  opacity: 0.85;
+}
+.team-thumb {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    /* height: 400px; /* Si necesitas una altura fija para el contenedor general del equipo, puedes descomentarla. */
+}
+
+/* --- Estilos Base (Para Móviles y lo más pequeños - se aplican por defecto) --- */
+.team-thumb img.img-fluid {
+    width: 100px;      /* Tamaño para móviles */
+    height: 100px;     /* Mismo valor para mantener la proporción cuadrada */
+    /*border-radius: 50%; /* Hace la imagen redonda en todas las pantallas */
+    object-fit: cover;  /* Asegura que la imagen cubra el área sin distorsionarse */
+    display: block;     /* Para que se centre con margin: auto */
+    margin: 0 auto 0px auto; /* Centrar horizontalmente y dar espacio abajo */
+    /* Asegúrate de que no haya otras propiedades que sobrescriban width/height aquí */
+}
+
+/* --- Media Query para Tablets y Desktops Pequeños (ej. Ancho >= 768px) --- */
+/* --- Estilos por defecto para todas las pantallas (primero lo móvil) --- */
+
+/* Aseguramos que la columna del coach ocupe el 100% del ancho y no tenga margen lateral,
+   además de añadir espacio entre los coaches. Estos estilos se aplican a todas las pantallas
+   y serán sobreescritos por las media queries más grandes si es necesario. */
+.about .col-12.mx-auto { /* Apuntamos a la columna de los coaches dentro de la sección .about */
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0 !important; /* Anular cualquier margin-left automático o de Bootstrap */
+    margin-right: 0 !important; /* Anular cualquier margin-right automático o de Bootstrap */
+    padding-left: 15px; /* Mantener el padding estándar de Bootstrap */
+    padding-right: 15px; /* Mantener el padding estándar de Bootstrap */
+    margin-bottom: 30px; /* Añade un espacio entre los coaches */
+    text-align: center; /* Centrar el contenido de la columna, lo que ayuda a centrar team-thumb */
+}
+
+/* Estilos para la imagen del coach dentro de team-thumb (para móviles por defecto) */
+.team-thumb img.img-fluid { /* Selector más específico */
+    width: 100%; /* La imagen ocupará el 100% del ancho de su contenedor (.team-thumb) */
+    height: auto; /* Mantiene la proporción de la imagen */
+    display: block; /* Asegura que la imagen sea un elemento de bloque para centrarse */
+    margin: 0 auto; /* ¡Esto centrará la imagen horizontalmente! */
+    /* Aquí no establecemos un tamaño fijo para que en móvil ocupe el ancho completo de la columna */
+}
+
+/* Centrar el texto debajo de la imagen del coach */
+.team-info {
+    background: var(--white-color);
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 0 0 2px 2px;
+    box-shadow: 6px 0 38px rgba(20,20,20,0.10);
+    padding: 20px;
+    position: relative;
+    text-align: center; /* Centra el texto del nombre y la especialidad */
+}
+
+.team-info span { /* O donde sea que esté esa regla */
+    font-weight: bold; /* Quita el (---) */
+    opacity: 0.85;
+}
+
+/* Centrar los iconos sociales del coach */
+.team-info .social-icon {
+    position: relative; /* Cambiado de absolute para que se centre con text-align: center */
+    top: auto; /* Anula el 'top' si estaba definido en absolute */
+    right: auto; /* Anula el 'right' si estaba definido en absolute */
+    padding-left: 0; /* Elimina cualquier padding que pueda desalinear la lista */
+    list-style: none; /* Eliminar viñetas si las hubiera */
+    display: flex; /* Usamos flexbox para centrar los LI */
+    justify-content: center; /* Centra los ítems (LI) dentro del UL */
+     margin-top: 1px !important; /* Puedes ajustar el margen superior si lo necesitas */
+    width: 100%; /* Para que ocupe todo el ancho y justify-content funcione bien */
+}
+
+.team-info .social-icon li {
+    display: block; /* Vuelven a ser inline-block para estar uno al lado del otro */
+    margin: 1px; /* Espacio entre los iconos */
+}
+ .team-info .social-icon li a.fa-instagram {
+    color: white; /* Asegura que el ícono esté blanco */
+    text-shadow: 0 0 1px var(--primary-color), /* Sombra ligera en el borde */
+                 0 0 2px var(--primary-color); /* Otra sombra para reforzar el contorno */
+}
+
+/* --- Media Query para Tablets y Desktops Pequeños (ej. Ancho >= 768px) --- */
+@media (min-width: 768px) {
+    /* Ajusta la columna para que Bootstrap pueda manejar el layout de cuadrícula */
+    .about .col-md-4 { /* Apunta a la clase de Bootstrap */
+        margin-left: auto; /* Restaura el margen automático para centrado de columna si es necesario */
+        margin-right: auto;
+        margin-bottom: 0; /* Elimina el margen inferior en pantallas grandes */
+    }
+
+    .team-thumb img.img-fluid {
+        width: 180px;  /* Tamaño más grande para tablets y desktops medianos */
+        height: 180px; /* Mismo valor para mantener la proporción */
+        margin-bottom: 0px; /* Ya no necesitas margen inferior en la imagen, si la info-box está abajo */
+    }
+
+    .team-info .social-icon {
+      /*  position: absolute; /* Vuelve a absolute en pantallas grandes */
+       /* top: 10px;
+       /* right: 20px;*/
+        display: block; /* Vuelve a display block para la posición absoluta */
+        width: auto; /* Restaura el ancho */
+        justify-content: flex-start; /* Restablece el justify-content */
+        margin-top: 10px; /* Prueba con 10px o 15px para separarlo del rol */
+        /* Si el problema es horizontal, puedes añadir esto */
+        margin-top:5px;
+    margin-left: auto;
+    margin-right: auto; /* Para centrarlo horizontalmente si width: auto/100% */
+    text-align: center; /* Si usas display: block y quieres el contenido centrado */
+    }
+
+    .team-info .social-icon li {
+        display: block; /* Los iconos se muestran verticalmente */
+    }
+
+}
+
+/* --- Media Query para Desktops Grandes (ej. Ancho >= 1200px) --- */
+@media (min-width: 1200px) {
+    .team-thumb img.img-fluid {
+        width: 220px; /* Tamaño aún más grande para pantallas muy amplias */
+        height: 220px;
+        margin-bottom: 0px;
+    }
+}
+  /*---------------------------------------
+     CONTACT              
+  -----------------------------------------*/
+.contact.section {
+    /* Mantenemos el padding que tenías o lo ajustamos si es necesario */
+    padding-top: 20px; /* Un padding generoso para la parte superior de la sección */
+    padding-bottom: 20px; /* Un padding generoso para la parte inferior de la sección */
+
+    /* --- AÑADE ESTAS LÍNEAS PARA LA IMAGEN DE FONDO EN EL CONTACTO --- */
+    background-image: url('../images/class/weightlifting_area.jpg'); /*Imagen detras de mapa*/
+    background-size: cover; /* La imagen cubrirá toda la sección */
+    background-position: center center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-attachment: fixed; /* Opcional: la imagen se queda fija al hacer scroll */
+    position: relative; /* Necesario para que el pseudo-elemento ::before funcione */
+   /* background-color: #171819; /* Establece el fondo a negro sólido */
+    z-index: 1; /* Asegura que la sección esté por encima del pseudo-elemento */
+    
+  }
+  /* --- AÑADE ESTE NUEVO BLOQUE CSS PARA EL OVERLAY OSCURO --- */
+.contact.section::before {
+    content: ""; /* Obligatorio para que el pseudo-elemento se genere */
+    position: absolute; /* Permite posicionarlo con top, left, etc. */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Color negro con 50% de opacidad (ajusta el 0.5 si quieres más/menos oscuro) */
+    z-index: -1; /* Esto lo coloca detrás del contenido de .contact.section, pero delante de su background-image */
+}
+
+/* --- Y AÑADE ESTE PSEUDO-ELEMENTO PARA EL OVERLAY SEMITRANSPARENTE --- */
+/*.contact::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Ajusta la opacidad del overlay (0.8 es 80% oscuro) */
+  /*  z-index: 0; /* Coloca el overlay detrás del contenido de la sección, pero encima de la imagen */
+
+
+/* Asegúrate de que .contact h2 + p no tenga margin-bottom negativo */
+.contact h2 + p {
+    max-width: 90%;
+    margin-bottom: 0; /* Asegúrate de que no haya un margen negativo que afecte el layout */
+    font-size: 18px; /*Location Symbol */
+  }
+/* --- FIN CODIGO NUEVO --- */
+  .webform input,
+  button#submit-button {
+    height: calc(2.25rem + 20px);
+  }
+
+  .form-control {
+    border-radius: var(--border-radius-small);
+    margin: 1.3rem 0;
+  }
+
+  .form-control:focus {
+    box-shadow: none;
+    border-color: var(--dark-color);
+  }
+
+  button#submit-button {
+    background: var(--dark-color);
+    border: 1px solid rgba(2, 185, 17, 0.5); /*marco color*/
+    color: var(--white-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  button#submit-button:hover {
+    background: var(--primary-color);
+  }
+
+  .contact h2 + p {
+    max-width: 90%;
+   /*margin-bottom: 1rem; /* Reduce el margen inferior*/
+  }
+
+  .google-map {
+    border-top: none;
+    /*margin-top: -1rem;*/
+    /*margin-bottom: -4rem;*/
+      padding-top:0;
+       padding-bottom: 4rem;
+      z-index: 2; /* Para asegurar que el mapa siempre esté por encima del overlay */
+  }
+
+  .google-map iframe {
+    width: 100%;
+    height: 550px
+     display block;
+  }
+.col-lg-12.col-md-12.col-12 {
+    position: relative; /* Muy importante para que el z-index de los hijos funcione */
+    z-index: 3; /* Le damos un z-index superior al del mapa (2) */
+    /* Mantén tus otros estilos aquí, como mt-4 mt-lg-0 mt-md-0 */
+}
+
+/* Asegura que el color del texto sea visible y tengan un z-index si es necesario */
+h2 {
+    color: #f4f8f5 !important; /* Asegura que el texto sea blanco */
+    position: relative; /* Necesario para que z-index funcione */
+    z-index: 4; /* Mayor que el del mapa para que se vea por encima */
+}
+
+/* Regla para todos los párrafos (p) */
+p {
+    color: hsl(133, 96%, 47%); /* Aquí quita el !important si quieres que .direccion-verde gane */
+    position: relative;
+    z-index: 4;
+   /* font-size: 1.2rem;*/
+}
+
+/* Regla para la clase .direccion-verde */
+ p .direccion-verde {
+    color: rgb(11, 231, 11); /* O el color que desees */
+    font-size: 1.3rem !important; /* Direccion AV Rivadavia...! */
+    /* Puedes usar px, em, rem. rem es buena opción. */
+    /* Por ejemplo, 1.3rem, 1.4rem, 18px, 20px, etc. */
+}
+
+  /*---------------------------------------
+     FOOTER              
+  -----------------------------------------*/
+.site-footer {
+    border-top: 1px solid #efebeb;
+    padding: 3rem 0;
+    background-color: var(--dark-color); /* Asegúrate de que esta línea esté activa de nuevo */
+    position: relative;
+    overflow: hidden;
+    min-height: auto; /* 180pxAltura mínima del footer. Ajusta este valor si quieres que el footer sea más alto o bajo. */
+}
+    /* ELIMINA O COMENTA ESTAS LÍNEAS DE AQUÍ: */
+    /* background-image: url('../images/logomediano.png'); */
+    /* background-size: cover; */
+    /* background-position: center bottom; */
+    /* background-repeat: no-repeat; */
+    /* background-attachment: fixed; */
+    /* position: relative; */ /* Si no hay background-image o overlay, puede que no sea necesario */
+    /* z-index: 1; */ /* Si no hay background-image o overlay, puede que no sea necesario */
+    /* min-height: 500px; */ /* ELIMINA TAMBIÉN EL MIN-HEIGHT */
+    /* clear: both; */
+    /* margin-top: 1rem; */
+    /* Estilos para el contenedor del GIF en línea */
+.innova-gif-inline {
+    width: 80px; /* ¡AJUSTA ESTE ANCHO! Dale al GIF el tamaño deseado */
+    height: auto; /* Mantiene la proporción del GIF */
+    margin-right: 5px; /* Espacio a la derecha del GIF para separarlo del texto */
+    /* Puedes añadir un margen superior si el GIF no se alinea bien verticalmente con el texto */
+    /* margin-top: -5px; */
+     border: 2px solid #eceaea; /* Borde de 1px, sólido y gris claro */
+    border-radius: 3px; /* Opcional: Esquinas ligeramente redondeadas */
+}
+
+.innova-gif-inline img {
+    width: 100%; /* El GIF ocupa el 100% del ancho de su contenedor .innova-gif-inline */
+    height: auto; /* Mantiene la proporción */
+    
+    display: block; /* Elimina cualquier espacio extra debajo de la imagen */
+    opacity: 0.5; /* ¡AJUSTA ESTA OPACIDAD! El GIF se verá un poco opaco. */
+                   /* No tan opaco como antes, ya que no estará detrás de todo el footer */
+}
+.copyright-text {
+    color: var(--white-color); /* O el color que uses para el texto del copyright */
+    /* Asegúrate de que el texto no esté centrado si el GIF va al lado, a menos que quieras ambos centrados juntos */
+    text-align: left; /* O right, o center, dependiendo de cómo quieras el bloque completo */
+}
+
+/* Estilos para la imagen del GIF dentro de su contenedor */
+/* Estilos para el contenedor del GIF de fondo */
+.footer-gif-background {
+    position: absolute;
+    top: 0;
+    left: -545px;
+    right: 25px;
+    width: 100%;
+    height: 100%; /* Ocupa el 100% del espacio del footer */
+    z-index: 0;
+    overflow: hidden;
+    
+
+    /* ¡NUEVO! Usa flexbox para centrar la imagen del GIF dentro de este contenedor */
+    display: flex;
+    justify-content: center; /* Centra horizontalmente el GIF */
+    align-items: center;   /* Centra verticalmente el GIF */
+}
+
+/* Estilos para la imagen del GIF dentro de su contenedor */
+.footer-gif-background img {
+    max-width: 100%; /* Asegura que el GIF no se desborde horizontalmente */
+    max-height: 80%; /* ¡AJUSTE CLAVE AQUÍ! Limita la altura máxima del GIF al 70% de la altura de su contenedor (.footer-gif-background).
+                       Puedes probar con valores como 50%, 60%, 80% para ver el tamaño que te gusta. */
+    object-fit: contain; /* Hace que el GIF se ajuste completamente a esa altura, sin recortarse. */
+    opacity: 0.5;
+    border: 2px solid #8a8888;
+    /* display: block; no es necesario cuando el padre usa flexbox */
+}
+
+
+/* ELIMINA O COMENTA TODO ESTE BLOQUE: */
+/* .site-footer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: -1;
+} */
+
+  /*---------------------------------------
+     SOCIAL ICON              
+  -----------------------------------------*/
+
+  .social-icon {
+    position: relative;
+    padding: 0;
+    margin: 5px 0 0 0;
+  }
+
+  .social-icon li {
+    display: inline-block;
+    list-style: none;
+  }
+
+  .social-icon li a {
+    text-decoration: none;
+    display: inline-block;
+    color: #f9fdfa; /*color icono inst*/
+    font-size: var(--p-font-size);
+    font-weight: var(--font-weight-bold);
+    margin: 5px 10px;
+    text-align: center;
+     font-size: 24px;
+  }
+
+  .social-icon li a:hover {
+    color: var(--primary-color);
+  }
+
+
+  /*---------------------------------------
+     RESPONSIVE STYLES              
+  -----------------------------------------*/
+
+  @media screen and (max-width: 992px) {
+
+    .section {
+      padding: 5rem 0;
+    }
+
+    .nav-item .nav-link {
+      padding: 6px;
+    }
+
+    .navbar .social-icon {
+      margin-top: 22px;
+    }
+
+    .navbar-collapse,
+    .site-footer {
+      text-align: center;
+    }
+
+    .schedule-table {
+      display: block;
+    }
+
+    .modal-content {
+      padding: 2rem;
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    
+
+ /* --- Estilos Base (Aplicados a todos los dispositivos, optimizados para móviles) --- */
+
+h1 {
+    font-size: 38px; /* Este será el tamaño de fuente para h1 en móviles */
+    /* Aquí puedes añadir otros estilos generales para h1, como margin, text-align, color, etc. */
+    text-align: center; /* Ejemplo: si quieres que h1 esté centrado en móvil */
+    margin-bottom: 15px;
+
+   .about-working-hours {
+    border-left: 0; /* Si esto es solo para móviles, ponlo aquí */
+    padding: 22px 0 0 0; /* Los paddings para móvil */
+    /* Otros estilos base para .about-working-hours */
+}
+.contact h2 span {
+    display: block; /* Esto es un comportamiento específico de bloque para móviles */
+    margin-bottom: 0rem; /* Espaciado específico para móvil */
+    /* Otros estilos base para este span */
+}
+  }
+  
+
+/* --- Media Query para Tablets y Desktops (cuando el ancho es MAYOR a 767px) --- */
+/*@media (min-width: 768px)  /* Usamos min-width para el enfoque mobile-first */
+   /* body {
+        font-size: 17px; /* Aumenta el tamaño de fuente para pantallas más grandes */
+   /* }
+
+    h1 {
+      /*  font-size: 48px;  Tamano de fuente más grande para h1 en desktop*/}

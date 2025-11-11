@@ -1,0 +1,17 @@
+
+
+.scroll-text-container {
+  overflow: hidden;
+  white-space: nowrap;
+  height: 30px; /* Establece una altura explícita para el contenedor (ajusta según necesites) */
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.scroll-text {
+  display: inline-block;
+  transform: translateX(100%);
+  color: white;
+  font-weight: bold;
+  line-height: 30px; /* Establece la altura de línea igual a la altura del contenedor */
+  vertical-align: middle; /* Opcional: ayuda a alinear verticalmente en algunos casos */
+}
